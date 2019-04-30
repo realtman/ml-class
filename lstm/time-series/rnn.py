@@ -65,6 +65,6 @@ testX = testX[:, :, np.newaxis]
 model = Sequential()
 model.add(SimpleRNN(10, input_shape=(config.look_back, 1)))
 model.add(Dense(1))
-model.compile(loss='mae', optimizer='rmsprop')
+model.compile(loss='mae', optimizer='rmsprop', metrics=['accuracy'])
 model.fit(trainX, trainY, epochs=1000, batch_size=20, validation_data=(testX, testY),  callbacks=[
           PlotCallback(trainX, trainY, testX, testY, config.look_back, config.repeated_predictions), WandbCallback()])
